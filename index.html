@@ -23,7 +23,7 @@
         console.log(window.frames['googleFrame'].contentDocument)
         const urlSearchParams = new URLSearchParams(window.location.search);
         const params = Object.fromEntries(urlSearchParams.entries());
-        document.getElementById("googleFrame").src = `https://script.google.com/macros/s/AKfycbwbbkHf8z1L_OBZ68GR3ID-fDvMC553gQ5wJCWxPpSXYmI4hgdlTyOb4lK5FBa9Io4E/exec?${Object.keys(params)[0]}`
+        document.getElementById("googleFrame").src = `https://script.google.com/macros/s/AKfycbxTyojN37MocG8uHjWHRBBdLxqziiNGRB4R6kllHSJO_XdP2KZWAd7mKqspbnjB3m4q/exec?${Object.keys(params)[0]}`
         
         //window.frames['googleFrame'].document.getElementById('reload-ref').addEventListener("change", location.reload());
     </script>
