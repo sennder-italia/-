@@ -2,6 +2,303 @@
 <html>
   <head>
     <base target="_top">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+.sidebar {
+    background-color: black;
+    width: 150px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.sidebar h1 {
+    color: white;
+}
+
+.portfolio {
+    background-color: red;
+    position: absolute;
+    top: 0;
+    left: 150px;
+    right: 0;
+    bottom: 0;
+    
+    -moz-transition: left 0.5s ease;
+    transition: left 0.5s ease;
+}
+
+input[type=checkbox] {
+   display: none;
+}
+
+input:checked ~ .portfolio { 
+    left: 0;
+}
+
+input:checked ~ label {
+    left: 0;
+}
+
+label {
+    z-index: 2;
+    top: 0;
+    left: 150px;   
+    -moz-transition: left 0.5s ease;
+    transition: left 0.5s ease;
+}
+
+		body {
+			background: #eeeeee;
+			font-family: Montserrat, sans-serif;
+		}
+
+		h1 {
+			text-align: center;
+			font-weight: 700;
+			letter-spacing: 1px;
+			font-size: 32px;
+			color: #ff8000;
+			margin: 20px 0 0;
+		}
+
+		h2 {
+			text-align: center;
+			font-size: 22px;
+			font-weight: 300;
+			color: #8b8b8b;
+			margin: 0 0 20px;
+		}
+
+		a {
+			color: #ff8000;
+		}
+
+		th,
+		td {
+			text-align: center;
+		}
+
+		td {
+			padding: 0 5px;
+		}
+
+		.materialize-textarea {
+			margin: 10px 0 !important;
+		}
+
+		li {
+			margin: 5px;
+		}
+
+		button {
+			border-radius: 10px;
+			margin: 2px;
+			padding: 1px 8px 2px;
+			border: 2px solid #C1C1C1;
+			color: #8b8b8b;
+			transition-duration: 0.4s;
+		}
+
+		.id {
+			color: #ff8000;
+		}
+
+		.highlight tr:hover>td {
+			color: #5c4e40;
+			background: #f2f2f2;
+		}
+
+		.form {
+			margin: auto;
+			max-width: 1000px;
+		}
+
+		.submit {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+    .hidden {
+      display: none;
+    }
+
+		#submit {
+			border-radius: 20px;
+			margin: 30px auto;
+		}
+
+    #submit:focus {
+      color: #fff;
+    }
+
+		.input-field {
+			margin: 0;
+		}
+
+    a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+}
+
+		.input-field input:focus+label {
+			color: #ff8000 !important;
+		}
+
+		.row .input-field input:focus {
+			border-bottom: 1px solid #ff8000 !important;
+			box-shadow: 0 1px 0 0 #ff8000 !important
+		}
+
+		.input-field input[type=text]:focus+label,
+		.materialize-textarea:focus:not([readonly])+label {
+			color: #ff8000 !important;
+		}
+
+		.input-field input[type=text]:focus,
+		.materialize-textarea:focus:not([readonly]) {
+			border-bottom: 1px solid #ff8000 !important;
+			box-shadow: 0 1px 0 0 #ff8000 !important;
+		}
+
+		.tooltip {
+			position: relative;
+			display: inline-block;
+			color: #ff8000;
+		}
+
+		.tooltip .tooltiptext {
+			visibility: hidden;
+			width: 300px;
+			background-color: #27272773;
+			backdrop-filter: blur(5px);
+			color: #fff;
+			text-align: center;
+			padding: 10px;
+			border-radius: 6px;
+			top: -5px;
+			left: 120%;
+			position: absolute;
+			z-index: 2;
+		}
+
+		.tooltip:hover .tooltiptext {
+			visibility: visible;
+		}
+
+		.switch label input[type=checkbox]:checked+.lever {
+			background-color: #ffb963;
+		}
+
+		.switch label input[type=checkbox]:checked+.lever:after {
+			background-color: #fcfcfc;
+		}
+
+		.validInput {
+			background-color: #ff8000;
+			color: white;
+			padding: 5px 8px;
+			font-family: sans-serif;
+			border-radius: 50%;
+			cursor: pointer;
+			margin-top: 1rem;
+		}
+
+    .uploaded{
+      background-color: #0dba3b;
+			color: white;
+			padding: 5px 8px;
+			font-family: sans-serif;
+			border-radius: 50%;
+			cursor: pointer;
+			margin-top: 1rem;
+    }
+
+		.invalidInput {
+			background-color: grey;
+			color: white;
+			padding: 5px 8px;
+			font-family: sans-serif;
+			border-radius: 50%;
+			cursor: pointer;
+			margin-top: 1rem;
+		}
+
+		#file-chosen {
+			margin-left: 0.3rem;
+			font-family: sans-serif;
+		}
+
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 2;
+			padding: 40px 0 40px;
+			left: 0;
+			top: 0;
+			width: 100%;
+			min-height: 100% !important;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.4);
+			backdrop-filter: blur(4px);
+		}
+
+		.modal-content {
+			background-color: #fefefe;
+			margin: auto;
+			padding: 20px;
+			border: 1px solid #888;
+			border-radius: 7px;
+			width: 80%;
+		}
+
+		.close {
+			display: block;
+			color: #aaaaaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: #000;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		.sennder-logo {
+			position: fixed;
+			display: block;
+			z-index: 1;
+			left: 50%;
+			transform: translate(-50%, 0);
+			bottom: 10px;
+			filter: drop-shadow(0px 0px 35px #0000004f);
+		}
+
+		.form {
+			display: none;
+		}
+
+		.active-tab,
+		button:focus {
+			background-color: #FCEBD8;
+			color: #ff8000;
+			border: 2px solid #ff800069;
+		}
+	</style>
   </head>
   <body>
     <h1>Procedura Penali</h1>
