@@ -10,7 +10,15 @@
 	<link rel="stylesheet" href="info_style.css">	
   </head>
   <body>
+        <a id="backButton" href="" style="color: #ff8000; font-size:20px; position: absolute; left:20px">
+      ◄ Indietro
+    </a>
+    
+ 
+
     <h1>Procedura Penali</h1>
+    <div style="display:flex; flex-direction: column; justify-content: center; align-items: center; width: 50%;
+  margin: 0 auto;">
 			<ul>
 				<li>sennder Italia S.r.l. (c.f./p.i. 10933700964) con sede legale a 20125, Milano (MI) - Via Ferrante
 					Aporti n. 10, in persona del legale
@@ -94,5 +102,11 @@
 			</ul>
 			<p>In caso di ulteriori domande, puoi contattarci all'indirizzo <a
 					href="mailto:penali@sennder.it?subject=Ritardi di Percorrenza">penali@sennder.it</a></p>
+    </div>
+	  <script type="text/javascript">
+		const urlSearchParams = new URLSearchParams(window.location.search);
+        	const params = Object.fromEntries(urlSearchParams.entries());
+        	document.getElementById("backButton").src = `https://sennder-italia.github.io/penalties/?${Object.keys(params)[0]}`
+	  </script>
   </body>
 </html>
